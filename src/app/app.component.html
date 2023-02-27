@@ -1,0 +1,10 @@
+<div class="botonInicio centrarDiv" *ngIf="this.route.url == '/'" >
+  <button routerLink="/todoList">Ir al <span>ToDo List</span></button>
+</div>
+<div class="botonInicio" *ngIf="this.route.url == '/todoList'" >
+  <button routerLink="/">Volver</button>
+</div>
+<router-outlet></router-outlet>
+<footer [ngClass]="this.route.url == '/' ? 'centrarDiv' : ''">
+   <p>&copy; 2023 - by: Juanje 🙋‍♂️</p> 
+</footer>

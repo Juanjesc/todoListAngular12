@@ -1,0 +1,88 @@
+<h1>ToDo List</h1>
+<div class="formularioContainer">
+    <div class="campo">
+        <label>
+          Tarea:
+        </label>
+        <input type="text" [(ngModel)]="nombreTarea" placeholder="Ponle nombre a tu tarea" />
+    </div>
+    <div class="campo">
+        <label>
+          Estimación:
+        </label>
+        <input type="text" [(ngModel)]="estimacionTarea" placeholder="Estima tu tarea"/>
+    </div>
+    <div class="campo">
+        <label>
+          Columna:
+        </label>
+        <select [(ngModel)]="columnaSeleccionada">
+          <option value="pendientes">Pendientes de desarrollo</option>
+          <option value="enDesarrollo">En desarrollo</option>
+          <option value="enRevision">En revisión</option>
+          <option value="hechas">Hechas</option>
+        </select>
+    </div>
+    <div class="campo">
+        <button (click)="agregarTarea()">Agregar Tarea</button>
+    </div>
+</div>
+
+<div class="columnas">
+  <div class="columna">
+    <h2>Pendientes</h2>
+    <div *ngFor="let tarea of todoList.pendientes">
+      <div class="contenidoTarea">
+        <p>Nombre: <span>{{ tarea.nombre }}</span></p>
+        <p>Estimación: <span>{{ tarea.estimacion }}</span></p>
+        <div class="botonesContainer">
+            <button (click)="moverTarea('pendientes', tarea, 'anterior')">←</button>
+            <button (click)="eliminarTarea('pendientes', tarea)"><span>🗑️</span></button>
+            <button (click)="moverTarea('pendientes', tarea, 'siguiente')"> →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columna">
+    <h2>En desarrollo</h2>
+    <div *ngFor="let tarea of todoList.enDesarrollo">
+      <div class="contenidoTarea">
+        <p>Nombre: <span>{{ tarea.nombre }}</span></p>
+        <p>Estimación: <span>{{ tarea.estimacion }}</span></p>
+        <div class="botonesContainer">
+            <button (click)="moverTarea('enDesarrollo', tarea, 'anterior')">←</button>
+            <button (click)="eliminarTarea('enDesarrollo', tarea)"><span>🗑️</span></button>
+            <button (click)="moverTarea('enDesarrollo', tarea, 'siguiente')"> →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columna">
+    <h2>En revisión</h2>
+    <div *ngFor="let tarea of todoList.enRevision">
+      <div class="contenidoTarea">
+        <p>Nombre: <span>{{ tarea.nombre }}</span></p>
+        <p>Estimación: <span>{{ tarea.estimacion }}</span></p>
+        <div class="botonesContainer">
+            <button (click)="moverTarea('enRevision', tarea, 'anterior')">←</button>
+            <button (click)="eliminarTarea('enRevision', tarea)"><span>🗑️</span></button>
+            <button (click)="moverTarea('enRevision', tarea, 'siguiente')"> →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columna">
+    <h2>Hechas</h2>
+    <div *ngFor="let tarea of todoList.hechas">
+      <div class="contenidoTarea">
+        <p>Nombre: <span>{{ tarea.nombre }}</span></p>
+        <p>Estimación: <span>{{ tarea.estimacion }}</span></p>
+        <div class="botonesContainer">
+            <button (click)="moverTarea('hechas', tarea, 'anterior')">←</button>
+            <button (click)="eliminarTarea('hechas', tarea)"><span>🗑️</span></button>
+            <button (click)="moverTarea('hechas', tarea, 'siguiente')"> →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
